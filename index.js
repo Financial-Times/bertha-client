@@ -1,3 +1,4 @@
+// commonjs interface
 module.exports = {
-  get: require('./dist/get');
+  get: require('./dist/get').default,
 };
