@@ -1,0 +1,27 @@
+machine:
+  timezone: Europe/London
+  node:
+    version: stable
+  environment:
+    PATH: "${PATH}:${HOME}/${CIRCLE_PROJECT_REPONAME}/node_modules/.bin"
+
+dependencies:
+  override:
+    - yarn
+  cache_directories:
+    - ~/.cache/yarn
+
+test:
+  override:
+    - yarn test
+
+general:
+  artifacts:
+    - dist
+
+deployment:
+  npm:
+    branch: master
+    commands:
+      - echo -e "$NPM_USERNAME\n$NPM_PASSWORD\n$NPM_EMAIL" | npm login
+      - ./node_modules/.bin/publish
