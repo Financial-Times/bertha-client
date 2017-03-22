@@ -9,19 +9,20 @@ A client library for fetching data from [Bertha](https://github.com/ft-interacti
 
 #### Browser
 
-Use Browserify or Rollup. Requires [window.fetch](#) so you'll need to polyfill it.
+Use Browserify or Rollup. Requires [window.fetch](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/fetch), so make sure this is [polyfilled](https://cdn.polyfill.io/v2/docs/features/#fetch).
 
 #### Node
 
-Just `require` or `import` as usual. No need to polyfill anything. The Node version uses node-fetch internally, and does not modify the global scope.
+Just `require` or `import` as usual. No need to polyfill anything. The Node version uses node-fetch internally (without modifying the global scope).
 
 ## Usage
 
 ```js
 import bertha from 'bertha-client'; // or const bertha = require('bertha-client');
 
-bertha.get(sheetKey, ['someSheet', 'anotherSheet']).then((data) => {
-  console.log('data from Bertha', data);
+bertha.get(sheetKey, ['someSheet', 'anotherSheet|object']).then((data) => {
+  console.log(data);
+  // { someSheet: [...], anotherSheet: [...] }
 });
 ```
 
@@ -60,7 +61,7 @@ Plain object (optional).
 
 The data is always returned a plain JavaScript object (not an array). The key names correspond with the sheet names.
 
-##### Object transformation
+##### The `|object` transformation
 
 If you append a sheet name with `|object`, that sheet will be transformed into a **plain object** (instead of an array), using the sheet's `name` and `value` columns as the keys and values of the object, respectively. Any other columns are discarded.
 
