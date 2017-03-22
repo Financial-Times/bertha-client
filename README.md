@@ -1,6 +1,12 @@
 # bertha-client
 
-A client library for fetching data from [Bertha](https://github.com/ft-interactive/bertha).
+A client library for fetching data from [Bertha](https://github.com/ft-interactive/bertha). Suitable for both clientside and serverside.
+
+Why use this instead of fetching Bertha URLs yourself?
+
+- takes care of the URL syntax
+- gives more helpful error messages when things go wrong
+- provides an easy way to transform certain sheets into objects
 
 ## Installation
 
@@ -61,7 +67,7 @@ Plain object (optional).
 
 The data is always returned a plain JavaScript object (not an array). The key names correspond with the sheet names.
 
-##### The `|object` transformation
+### The `|object` transformation
 
 If you append a sheet name with `|object`, that sheet will be transformed into a **plain object** (instead of an array), using the sheet's `name` and `value` columns as the keys and values of the object, respectively. Any other columns are discarded.
 
