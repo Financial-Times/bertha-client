@@ -2,7 +2,7 @@
 
 A client library for fetching data from [Bertha](https://github.com/ft-interactive/bertha). For use in Node and the browser.
 
-Why use this instead of fetching Bertha URLs with `fetch` or `axios`??
+Why use this instead of fetching Bertha URLs with `fetch` or `axios`?
 
 - takes care of the URL syntax
 - gives more helpful error messages when things go wrong
