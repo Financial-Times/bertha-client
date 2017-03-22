@@ -1,6 +1,7 @@
 {
   "name": "bertha-client",
   "version": "0.0.0",
+  "author": "callumlocke",
   "ava": {
     "babel": {},
     "files": "dist/**/*.test.js",
@@ -31,7 +32,8 @@
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-react": "^6.10.3",
-    "flow-bin": "^0.42.0"
+    "flow-bin": "^0.42.0",
+    "publish": "^0.6.0"
   },
   "files": [
     "index.js",
@@ -40,6 +42,7 @@
   ],
   "jsnext:main": "src/index",
   "module": "src/index",
+  "repo": "financial-times/bertha-client",
   "scripts": {
     "build": "del dist && babel src --out-dir dist --source-maps",
     "build:watch": "del dist && babel src --out-dir dist --watch --source-maps",
