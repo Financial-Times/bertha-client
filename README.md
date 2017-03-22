@@ -10,8 +10,7 @@ Why use this instead of fetching Bertha URLs yourself?
 
 ## Installation
 
-- `yarn add bertha-client`
-- `npm install bertha-client`
+- `yarn add bertha-client` **or** `npm install bertha-client`
 
 #### Browser
 
