@@ -1,6 +1,6 @@
 {
   "name": "bertha-client",
-  "version": "0.0.1",
+  "version": "0.0.4",
   "author": "callumlocke",
   "ava": {
     "babel": {},
