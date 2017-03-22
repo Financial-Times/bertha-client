@@ -21,7 +21,7 @@ Why use this instead of fetching Bertha URLs yourself?
 ```js
 import bertha from 'bertha-client'; // or const bertha = require('bertha-client');
 
-bertha.get(sheetKey, ['someSheet', 'anotherSheet|object']).then((data) => {
+bertha.get(spreadsheetKey, ['someSheet', 'anotherSheet|object']).then((data) => {
   console.log(data);
   // { someSheet: [...], anotherSheet: [...] }
 });
@@ -31,11 +31,11 @@ bertha.get(sheetKey, ['someSheet', 'anotherSheet|object']).then((data) => {
 
 Currently there is just one method.
 
-### bertha.get(sheetKey, sheetNames, [options])
+### bertha.get(spreadsheetKey, sheetNames, [options])
 
 Fetches the sheet and returns a promise for the response data.
 
-##### sheetKey
+##### spreadsheetKey
 
 String (required). A valid Google spreadsheet key, or a full Google Spreadsheet URL or Bertha URL.
 
