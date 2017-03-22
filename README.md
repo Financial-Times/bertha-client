@@ -12,13 +12,9 @@ Why use this instead of fetching Bertha URLs yourself?
 
 - `yarn add bertha-client` **or** `npm install bertha-client`
 
-#### Browser
+**Browser**: Use Browserify or Rollup. Requires [window.fetch](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/fetch), so make sure this is [polyfilled](https://cdn.polyfill.io/v2/docs/features/#fetch).
 
-Use Browserify or Rollup. Requires [window.fetch](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/fetch), so make sure this is [polyfilled](https://cdn.polyfill.io/v2/docs/features/#fetch).
-
-#### Node
-
-Just `require` or `import` as usual. No need to polyfill anything. The Node version uses node-fetch internally (without modifying the global scope).
+**Node**: Just `require` or `import` as usual. No need to polyfill anything – the Node version of bertha-client uses [node-fetch](https://github.com/bitinn/node-fetch) internally.
 
 ## Usage
 
