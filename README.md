@@ -79,3 +79,12 @@ Example:
   bar: '123',
 }
 ```
+
+## Publishing to npm
+
+bertha-client is automatically published to npm via CircleCI whenever the master branch contains a higher version string than the latest published version.
+
+To publish a new version:
+
+- `npm version patch` (or `npm version minor` or `npm version major` as appropriate)
+- `git push && git push --tags`
