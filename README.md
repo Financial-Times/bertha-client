@@ -1,12 +1,12 @@
 # bertha-client [![CircleCI](https://circleci.com/gh/Financial-Times/bertha-client.svg?style=svg)](https://circleci.com/gh/Financial-Times/bertha-client) [![npm](https://img.shields.io/npm/v/bertha-client.svg)](npmjs.com/package/bertha-client)
 
-A client library for fetching data from [Bertha](https://github.com/ft-interactive/bertha). Suitable for both clientside and serverside.
+A client library for fetching data from [Bertha](https://github.com/ft-interactive/bertha). For use in Node and the browser.
 
-Why use this instead of fetching Bertha URLs yourself?
+Why use this instead of fetching Bertha URLs with `fetch` or `axios`??
 
 - takes care of the URL syntax
 - gives more helpful error messages when things go wrong
-- provides an easy way to transform certain sheets into objects
+- provides an easy way to transform sheets into objects
 
 ## Installation
 
