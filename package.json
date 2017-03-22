@@ -42,7 +42,7 @@
   ],
   "jsnext:main": "src/index",
   "module": "src/index",
-  "repo": "financial-times/bertha-client",
+  "repository": "financial-times/bertha-client",
   "scripts": {
     "build": "del dist && babel src --out-dir dist --source-maps",
     "build:watch": "del dist && babel src --out-dir dist --watch --source-maps",
