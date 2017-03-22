@@ -6,6 +6,7 @@
     "babel": {},
     "files": "dist/**/*.test.js",
     "source": [
+      "index.js",
       "dist/**/*.js",
       "fixtures/**/*"
     ]
@@ -33,6 +34,7 @@
     "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-react": "^6.10.3",
     "flow-bin": "^0.42.0",
+    "nock": "^9.0.9",
     "publish": "^0.6.0"
   },
   "files": [
@@ -45,7 +47,6 @@
   "repository": "financial-times/bertha-client",
   "scripts": {
     "build": "del dist && babel src --out-dir dist --source-maps",
-    "build:watch": "del dist && babel src --out-dir dist --watch --source-maps",
-    "test": "flow && eslint src"
+    "test": "flow && eslint src && ava"
   }
 }
