@@ -64,19 +64,30 @@ The data is always returned a plain JavaScript object (not an array). The key na
 
 ### The `|object` transformation
 
-If you append a sheet name with `|object`, that sheet will be transformed into a **plain object** (instead of an array), using the sheet's `name` and `value` columns as the keys and values of the object, respectively. Any other columns are discarded.
+If you append a sheet name with `|object`, that sheet will be transformed into a **plain object** (instead of an array), using the sheet's `name` and `value` columns as key paths and values, respectively. Any other columns are discarded.
 
-Example:
+Example spreadsheet:
 
-| name | value |
-| ---- | ----- |
-| foo  | hiya  |
-| bar  | 123   |
+| name               | value   |
+| ------------------ | ------- |
+| foo                | hiya    |
+| bar                | 123     |
+| someone.age        | 50      |
+| someone.name.first | Bob     |
+| someone.name.last  | Hoskins |
 
 ```js
+// result of "|object" transform
 {
   foo: 'hiya',
   bar: '123',
+  someone: {
+    age: '50',
+    name: {
+      first: 'Bob',
+      last: 'Hoskins',
+    }
+  },
 }
 ```
 
