@@ -48,7 +48,7 @@ export default async (
   sheets.forEach(({ name: sheetName, flags }) => {
     flags.forEach((flag) => {
       switch (flag) {
-        case 'object':
+        case 'object': {
           if (result.length) {
             const keys = Object.keys(result[0]);
 
@@ -58,12 +58,25 @@ export default async (
           }
 
           // process this one as an object
-          result[sheetName] = result[sheetName].reduce((acc, { name, value }) => ({
-            ...acc,
-            [String(name)]: String(value),
-          }), {});
+          const object = {};
+          result[sheetName].forEach(({ name, value }) => {
+            const nameParts = name.split('.');
+
+            let ref = object;
+            nameParts.forEach((namePart, i) => {
+              if (i === nameParts.length - 1) {
+                ref[namePart] = String(value);
+              } else {
+                ref[namePart] = ref[namePart] || {};
+                ref = ref[namePart];
+              }
+            });
+          });
+
+          result[sheetName] = object;
 
           break;
+        }
 
         default: throw new Error(`bertha-client: Invalid flag "${flag}"`);
       }

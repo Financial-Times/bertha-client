@@ -100,3 +100,31 @@ test('get multiple sheets with `|object` transform', async (t) => {
 
   mock.done();
 });
+
+test('get single sheet with `|object` transform with dot-separated keys', async (t) => {
+  const data = [
+    { name: 'cat.name.first', value: 'Bob' },
+    { name: 'cat.name.last', value: 'Hoskins' },
+    { name: 'cat.age', value: 24 },
+    { name: 'dog', value: 'other' },
+  ];
+
+  const mock = nock('https://bertha.ig.ft.com')
+    .get('/view/publish/gss/ABC123/foo')
+    .reply(200, data)
+  ;
+
+  const response = await bertha.get('ABC123', ['foo|object']);
+
+  t.deepEqual(response, {
+    foo: {
+      cat: {
+        name: { first: 'Bob', last: 'Hoskins' },
+        age: '24',
+      },
+      dog: 'other',
+    },
+  });
+
+  mock.done();
+});
