@@ -13,9 +13,12 @@ jobs:
 
       # preparation
       - restore_cache:
-          key: bertha-client-{{ checksum "yarn.lock" }}
+        key: yarn-global-cache
       - restore_cache:
-          key: yarn-global-cache
+          key: bertha-client-{{ checksum "yarn.lock" }}
+      - run:
+          name: Install Yarn package manager
+          command: curl -o- -L https://yarnpkg.com/install.sh | bash
       - run: yarn
       - save_cache:
           key: bertha-client-{{ checksum "yarn.lock" }}
