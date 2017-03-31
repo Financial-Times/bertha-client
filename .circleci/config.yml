@@ -6,9 +6,11 @@ jobs:
     docker:
       - image: node:7.8.0
         # environment:
-        #   PATH: "${HOME}/${CIRCLE_PROJECT_REPONAME}/node_modules/.bin:${PATH}"
+          PATH: ./node_modules/.bin:${PATH}
 
     steps:
+      - run: echo $PATH
+
       - checkout
 
       # preparation
