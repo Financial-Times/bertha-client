@@ -4,3 +4,5 @@ parser: babel-eslint
 env:
   node: true
   browser: true
+rules:
+  import/prefer-default-export: 0

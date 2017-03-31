@@ -2,7 +2,7 @@
 
 import test from 'ava';
 import nock from 'nock';
-import bertha from '..';
+import * as bertha from '.';
 
 test('get single sheet', async (t) => {
   const data = [

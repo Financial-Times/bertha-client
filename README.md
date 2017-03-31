@@ -19,7 +19,7 @@ Why use this instead of fetching Bertha URLs with `fetch` or `axios`?
 ## Usage
 
 ```js
-import bertha from 'bertha-client'; // or const bertha = require('bertha-client');
+import * as bertha from 'bertha-client'; // or const bertha = require('bertha-client');
 
 bertha.get(spreadsheetKey, ['someSheet', 'anotherSheet|object']).then((data) => {
   console.log(data);
