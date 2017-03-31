@@ -18,7 +18,7 @@ jobs:
           key: bertha-client-{{ checksum "yarn.lock" }}
       - run:
           name: Install Yarn package manager
-          command: curl -o- -L https://yarnpkg.com/install.sh | bash
+          command: npm install --global yarn
       - run: yarn
       - save_cache:
           key: bertha-client-{{ checksum "yarn.lock" }}
