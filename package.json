@@ -6,7 +6,6 @@
     "babel": {},
     "files": "dist/**/*.test.js",
     "source": [
-      "index.js",
       "dist/**/*.js",
       "fixtures/**/*"
     ]
