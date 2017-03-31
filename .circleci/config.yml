@@ -1,0 +1,47 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/bertha-client
+
+    docker:
+      - image: node:7.8.0
+        environment:
+          PATH: "${HOME}/${CIRCLE_PROJECT_REPONAME}/node_modules/.bin:${PATH}"
+
+    steps:
+      - checkout
+
+      # preparation
+      - restore_cache:
+          key: bertha-client-{{ checksum "yarn.lock" }}
+      - restore_cache:
+          key: yarn-global-cache
+      - run: yarn
+      - save_cache:
+          key: bertha-client-{{ checksum "yarn.lock" }}
+          paths:
+            - node_modules/
+      - save_cache:
+          key: yarn-global-cache
+          paths:
+            - ~/.cache/yarn/
+
+      # code verifiers
+      - run: eslint .
+      - run: flow
+
+      # compile
+      - run:
+          name: Compile with babel
+          command: yarn run build
+
+      # test
+      - run:
+          name: npm test
+          command: npm test
+
+      # finishing up
+      - store_artifacts:
+          path: dist/
+
+      # TODO deploy
