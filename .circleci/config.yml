@@ -11,8 +11,6 @@ jobs:
 
       # preparation
       - restore_cache:
-          key: yarn-global-cache
-      - restore_cache:
           key: bertha-client-{{ checksum "yarn.lock" }}
       - run: yarn
       - save_cache:
@@ -20,10 +18,6 @@ jobs:
           paths:
             - node_modules/
       - run: yarn cache dir
-      - save_cache:
-          key: yarn-global-cache
-          paths:
-            - ~/.cache/yarn/
 
       # code verifiers
       - run:
