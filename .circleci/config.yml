@@ -7,7 +7,6 @@ jobs:
       - image: node:7.8.0
 
     steps:
-      - run: PATH=~/bertha-client/node_modules/.bin:$PATH
       - run: echo $PATH
 
       - checkout
@@ -31,8 +30,6 @@ jobs:
             - ~/.cache/yarn/
 
       # code verifiers
-      - run: eslint .
-      - run: flow
 
       # compile
       - run:
@@ -41,8 +38,6 @@ jobs:
 
       # test
       - run:
-          name: npm test
-          command: npm test
 
       # finishing up
       - store_artifacts:
