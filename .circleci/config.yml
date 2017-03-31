@@ -5,10 +5,9 @@ jobs:
 
     docker:
       - image: node:7.8.0
-        environment:
-          PATH: "./node_modules/.bin:${PATH}"
 
     steps:
+      - run: PATH=~/bertha-client/node_modules/.bin:$PATH
       - run: echo $PATH
 
       - checkout
