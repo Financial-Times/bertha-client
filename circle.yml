@@ -12,9 +12,13 @@ dependencies:
     - ~/.cache/yarn
 
 test:
+  pre:
+    - yarn run clean
   override:
-    - yarn run build
-    - yarn test
+    - yarn run verify
+    - yarn run build && yarn test
+  post:
+    - yarn run types
 
 general:
   artifacts:

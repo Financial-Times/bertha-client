@@ -14,7 +14,7 @@ type Options = {
 export default async (
   spreadsheetKey: string,
   sheetDescriptors: string[],
-  _options: Options,
+  _options?: Options,
 ) => {
   // apply defaults
   const options = { ...defaults, ..._options };

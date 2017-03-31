@@ -96,11 +96,11 @@ Example spreadsheet:
 
 ### Local setup
 
-Recommended approach: clone this repo and run `yarn`.
+Recommended approach:
 
-Then run `yarn run build -- --watch` – this will continually compile `src` to `dist`.
-
-In another terminal, run `yarn run test -- --watch` – this will run eslint then flow then ava, and it will continue running ava when files change.
+- Clone this repo and run `yarn`.
+- Run `yarn run build -- --watch` – this will continually compile `src` to `dist`.
+- In another terminal, run `yarn run test -- --watch` – this will run ava in watch mode.
 
 
 ### Publishing to npm
