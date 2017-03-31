@@ -4,9 +4,9 @@ jobs:
     machine: true
 
     working_directory: ~/bertha-client
-
-    docker:
-      - image: node:7.8.0
+    #
+    # docker:
+    #   - image: node:7.8.0
 
     steps:
       - checkout
