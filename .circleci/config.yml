@@ -13,7 +13,7 @@ jobs:
 
       # preparation
       - restore_cache:
-        key: yarn-global-cache
+          key: yarn-global-cache
       - restore_cache:
           key: bertha-client-{{ checksum "yarn.lock" }}
       - run:
