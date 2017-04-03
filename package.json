@@ -44,8 +44,6 @@
   "scripts": {
     "clean": "del dist/**",
     "build": "babel src --out-dir dist --source-maps",
-    "types": "flow gen-flow-files src/index.js --out-dir dist",
-    "test": "ava",
-    "verify": "eslint src && flow"
+    "types": "flow gen-flow-files src/index.js --out-dir dist"
   }
 }
