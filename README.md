@@ -108,9 +108,9 @@ Recommended approach:
 
 ### Publishing to npm
 
-bertha-client is automatically published to npm via CircleCI whenever the master branch contains a higher version string than the latest published version.
+This module is automatically published to npm via CircleCI whenever the master branch contains a higher version string than the latest published version.
 
 To publish a new version:
 
-- `npm version patch` (or `npm version minor` or `npm version major` as appropriate)
+- `yarn version` (will prompt you to enter a new version)
 - `git push && git push --tags`
