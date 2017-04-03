@@ -21,10 +21,13 @@ jobs:
           command: yarn run flow
       - run:
           name: Compile with babel
-          command: yarn run build
+          command: yarn run compile
       - run:
           name: AVA tests
           command: yarn run ava
+      - run:
+          name: Remove tests from dist
+          command: yarn run del -- ./dist/**/*.test.{js,js.map}
       - run:
           name: Generate typedef
           command: yarn run types

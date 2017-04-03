@@ -102,7 +102,7 @@ Example spreadsheet:
 Recommended approach:
 
 - Clone this repo and run `yarn`.
-- Run `yarn run build -- --watch` – this will compile files continually from `src` to `dist` using Babel.
+- Run `yarn run compile -- --watch` – this will compile files continually from `src` to `dist` using Babel.
 - In another terminal, run `yarn run ava -- --watch` to run ava continually against files in `dist`.
 
 
