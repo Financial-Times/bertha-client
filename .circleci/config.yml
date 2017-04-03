@@ -4,7 +4,7 @@ jobs:
     working_directory: ~/bertha-client
 
     docker:
-      - image: callum85/node-with-flow:0.0.1
+      - image: callum85/node-with-flow:0.0.2
 
     steps:
       - checkout
