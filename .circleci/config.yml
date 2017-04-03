@@ -25,7 +25,7 @@ jobs:
           command: ./node_modules/.bin/eslint .
       - run:
           name: Flow type-checking
-          command: flow
+          command: ./node_modules/.bin/flow
 
       # compile
       - run:
