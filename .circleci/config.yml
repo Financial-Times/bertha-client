@@ -1,0 +1,39 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/bertha-client
+    docker:
+      - image: callum85/node-with-flow:0.0.2
+    steps:
+      - checkout
+      - restore_cache:
+          key: bertha-client-{{ checksum "yarn.lock" }}
+      - run: yarn
+      - save_cache:
+          key: bertha-client-{{ checksum "yarn.lock" }}
+          paths:
+            - node_modules/
+      - run:
+          name: ESLint
+          command: yarn run eslint -- .
+      - run:
+          name: Flow type-checking
+          command: yarn run flow
+      - run:
+          name: Compile with babel
+          command: yarn run build
+      - run:
+          name: AVA tests
+          command: yarn run ava
+      - run:
+          name: Generate typedef
+          command: yarn run types
+      - store_artifacts:
+          path: dist/
+      - deploy:
+          name: Maybe publish to npm
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              echo -e "$NPM_USERNAME\n$NPM_PASSWORD\n$NPM_EMAIL" | npm login
+              ./node_modules/.bin/publish
+            fi

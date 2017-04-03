@@ -8,6 +8,7 @@ Why use this instead of fetching Bertha URLs with `fetch` or `axios`?
 - gives more helpful error messages when things go wrong
 - provides an easy way to transform sheets into objects
 
+
 ## Installation
 
 - `yarn add bertha-client` **or** `npm install bertha-client`
@@ -15,6 +16,7 @@ Why use this instead of fetching Bertha URLs with `fetch` or `axios`?
 **Browser**: Use Browserify or Rollup. Requires [window.fetch](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/fetch), so make sure this is [polyfilled](https://cdn.polyfill.io/v2/docs/features/#fetch).
 
 **Node**: Just `require` or `import` as usual. No need to polyfill anything – the Node version of bertha-client uses [node-fetch](https://github.com/bitinn/node-fetch) internally.
+
 
 ## Usage
 
@@ -26,6 +28,7 @@ bertha.get(spreadsheetKey, ['someSheet', 'anotherSheet|object']).then((data) => 
   // { someSheet: [...], anotherSheet: [...] }
 });
 ```
+
 
 ## API
 
@@ -99,8 +102,8 @@ Example spreadsheet:
 Recommended approach:
 
 - Clone this repo and run `yarn`.
-- Run `yarn run build -- --watch` – this will continually compile `src` to `dist`.
-- In another terminal, run `yarn run test -- --watch` – this will run ava in watch mode.
+- Run `yarn run build -- --watch` – this will compile files continually from `src` to `dist` using Babel.
+- In another terminal, run `yarn run ava -- --watch` to run ava continually against files in `dist`.
 
 
 ### Publishing to npm
