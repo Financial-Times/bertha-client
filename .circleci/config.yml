@@ -15,7 +15,7 @@ jobs:
             - node_modules/
       - run:
           name: ESLint
-          command: yarn run eslint -- .
+          command: yarn run eslint -- src
       - run:
           name: Flow type-checking
           command: yarn run flow
