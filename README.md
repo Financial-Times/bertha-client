@@ -15,7 +15,7 @@ Why use this instead of fetching Bertha URLs with `fetch` or `axios`?
 
 **Browser**: Use Browserify or Rollup. Requires [window.fetch](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/fetch), so make sure this is [polyfilled](https://cdn.polyfill.io/v2/docs/features/#fetch).
 
-**Node**: Just `require` or `import` as usual. No need to polyfill anything – the Node version of bertha-client uses [node-fetch](https://github.com/bitinn/node-fetch) internally.
+**Node**: Just `require` or `import` as usual. No need to polyfill anything – the Node version of bertha-client uses [node-fetch](https://github.com/bitinn/node-fetch) without modifying the global scope.
 
 
 ## Usage
@@ -31,8 +31,6 @@ bertha.get(spreadsheetKey, ['someSheet', 'anotherSheet|object']).then((data) => 
 
 
 ## API
-
-Currently there is just one method.
 
 ### bertha.get(spreadsheetKey, sheetNames, [options])
 
@@ -61,9 +59,19 @@ Plain object (optional).
 
 - `republish` (default: false) – set to `true` if you want Bertha to trigger a republish.
 
+### bertha.parseKey(url, [silent])
+
+Takes any valid Google Sheets URL or Bertha URL and returns a plain spreadsheet key. If the string you pass is already a plain key, it returns it unchanged.
+
+If you set `silent` to `true`, invalid input will result in the function returning `null` instead of throwing an error.
+
+### bertha.domains
+
+An array of known Bertha domains.
+
 ## Response data
 
-The data is always returned a plain JavaScript object (not an array). The key names correspond with the sheet names.
+The data from `bertha.get()` is always returned as a plain JavaScript object (even if there is only one sheet). The key names correspond with the sheet names.
 
 ### The `|object` transformation
 
