@@ -44,7 +44,7 @@
   "repository": "financial-times/bertha-client",
   "scripts": {
     "clean": "del dist/**",
-    "build": "babel src --out-dir dist --source-maps",
+    "build": "babel src --out-dir dist --source-maps --copy-files",
     "types": "flow gen-flow-files src/index.js --out-dir dist"
   }
 }

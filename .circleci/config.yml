@@ -25,9 +25,6 @@ jobs:
       - run:
           name: AVA tests
           command: yarn run ava
-      - run:
-          name: Generate typedef
-          command: yarn run types
       - store_artifacts:
           path: dist/
       - deploy:

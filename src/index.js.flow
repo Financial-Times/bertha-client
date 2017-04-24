@@ -1,0 +1,23 @@
+/**
+ * @flow
+ */
+
+type Sheet = {
+  [string]: any,
+}[];
+
+type BerthaGetResponse = {
+  [string]: Sheet,
+};
+
+declare module.exports: {
+  get: (
+    spreadsheetKey: string,
+    sheetDescriptors: string[],
+    options?: { republish?: boolean },
+  ) => Promise<BerthaGetResponse>,
+
+  parseKey: (input: string, silent?: boolean) => string | null,
+
+  domains: string[],
+};
