@@ -14,5 +14,5 @@
 
 > TODO: add earlier versions
 
-[Unreleased]: https://github.com/olivierlacan/keep-a-changelog/compare/v2.2.0...HEAD
-[2.2.0]: https://github.com/olivierlacan/keep-a-changelog/compare/v2.1.0...v2.2.0
+[Unreleased]: https://github.com/Financial-Times/bertha-client/compare/v2.2.0...HEAD
+[2.2.0]: https://github.com/Financial-Times/bertha-client/compare/v2.1.0...v2.2.0
