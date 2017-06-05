@@ -45,6 +45,7 @@
   "scripts": {
     "clean": "del dist/**",
     "build": "babel src --out-dir dist --source-maps --copy-files",
-    "types": "flow gen-flow-files src/index.js --out-dir dist"
+    "types": "flow gen-flow-files src/index.js --out-dir dist",
+    "test": "ava"
   }
 }

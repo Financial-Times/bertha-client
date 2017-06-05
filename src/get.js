@@ -1,5 +1,7 @@
 // @flow
 
+import createURL from './createURL';
+
 // use global fetch in browser, or node-fetch in node
 const fetch = global.fetch || require('node-fetch'); // eslint-disable-line global-require
 
@@ -9,9 +11,10 @@ const defaults = {
 
 type Options = {
   republish?: boolean,
+  query: { [string]: string | number },
 };
 
-export default async (
+const get = async (
   spreadsheetKey: string,
   sheetDescriptors: string[],
   _options?: Options,
@@ -34,7 +37,7 @@ export default async (
     throw new Error('bertha-client: Plus-operator (for optional sheets) is not supported by bertha-client');
   }
 
-  const url = `https://bertha.ig.ft.com/${options.republish ? 'republish' : 'view'}/publish/gss/${spreadsheetKey}/${sheets.map(s => encodeURIComponent(s.name)).sort().join(',')}`;
+  const url = createURL(spreadsheetKey, sheetDescriptors, options);
 
   // download the data
   const response = await fetch(url);
@@ -85,3 +88,5 @@ export default async (
 
   return result;
 };
+
+export default get;
