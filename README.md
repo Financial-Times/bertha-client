@@ -58,6 +58,11 @@ const sheetNames = [
 Plain object (optional).
 
 - `republish` (default: false) – set to `true` if you want Bertha to trigger a republish.
+- `query` (default: undefined) – an optional object of `{[name]: value}` to append to the URL as query parameters.
+
+### bertha.createURL(spreadsheetKey, sheetNames, [options])
+
+Identical API to `bertha.get()`, but simply returns a URL string.
 
 ### bertha.parseKey(url, [silent])
 
