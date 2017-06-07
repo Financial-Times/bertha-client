@@ -52,7 +52,8 @@ test('get multiple sheets', async (t) => {
 test('get single sheet with `|object` transform', async (t) => {
   const data = [
     { name: 'cat', value: 'yar' },
-    { name: 'dog', value: 456 },
+    { name: 'dog', value: true },
+    { name: 'parrot', value: 123 },
   ];
 
   const mock = nock('https://bertha.ig.ft.com')
@@ -65,7 +66,8 @@ test('get single sheet with `|object` transform', async (t) => {
   t.deepEqual(response, {
     foo: {
       cat: 'yar',
-      dog: '456',
+      dog: true,
+      parrot: 123,
     },
   });
 
@@ -94,7 +96,7 @@ test('get multiple sheets with `|object` transform', async (t) => {
   t.deepEqual(response, {
     foo: {
       cat: 'yar',
-      dog: '456',
+      dog: 456,
     },
     bar: data.bar,
   });
@@ -106,6 +108,7 @@ test('get single sheet with `|object` transform with dot-separated keys', async 
   const data = [
     { name: 'cat.name.first', value: 'Bob' },
     { name: 'cat.name.last', value: 'Hoskins' },
+    { name: 'cat.alive', value: true },
     { name: 'cat.age', value: 24 },
     { name: 'dog', value: 'other' },
   ];
@@ -121,7 +124,8 @@ test('get single sheet with `|object` transform with dot-separated keys', async 
     foo: {
       cat: {
         name: { first: 'Bob', last: 'Hoskins' },
-        age: '24',
+        age: 24,
+        alive: true,
       },
       dog: 'other',
     },

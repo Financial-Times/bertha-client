@@ -68,7 +68,7 @@ const get = async (
             let ref = object;
             nameParts.forEach((namePart, i) => {
               if (i === nameParts.length - 1) {
-                ref[namePart] = String(value);
+                ref[namePart] = value;
               } else {
                 ref[namePart] = ref[namePart] || {};
                 ref = ref[namePart];
