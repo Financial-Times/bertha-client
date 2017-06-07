@@ -91,14 +91,15 @@ Example spreadsheet:
 | someone.age        | 50      |
 | someone.name.first | Bob     |
 | someone.name.last  | Hoskins |
+| someone.name.last  | y       |
 
 ```js
 // result of "|object" transform
 {
   foo: 'hiya',
-  bar: '123',
+  bar: 123,
   someone: {
-    age: '50',
+    age: 50,
     name: {
       first: 'Bob',
       last: 'Hoskins',
@@ -106,6 +107,8 @@ Example spreadsheet:
   },
 }
 ```
+
+> NB. the Bertha server automatically converts certain values (`"y"` or `"yes"` becomes `true` etc.) – see [Bertha's docs](https://github.com/ft-interactive/bertha/wiki/Tutorial#standard-transforms). This conversion is not controlled by bertha-client – you'll need to specify a non-default column transform such as `..str` if you want to control it.
 
 
 ## Development
