@@ -108,7 +108,7 @@ Example spreadsheet:
 }
 ```
 
-> NB. the Bertha server automatically converts certain values (`"y"` or `"yes"` into `true`) etc. unless you use See [Bertha's docs](https://github.com/ft-interactive/bertha/wiki/Tutorial#standard-transforms). This conversion is not done by bertha-client – you'll need to use a [column transform](https://github.com/ft-interactive/bertha/wiki/Tutorial#column-transforms) such as `..str` if you want to control it.
+> NB. the Bertha server automatically converts certain values (`"y"` or `"yes"` becomes `true` etc.) – see [Bertha's docs](https://github.com/ft-interactive/bertha/wiki/Tutorial#standard-transforms). This conversion is not controlled by bertha-client – you'll need to specify a non-default column transform such as `..str` if you want to control it.
 
 
 ## Development
