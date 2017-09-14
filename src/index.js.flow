@@ -4,11 +4,11 @@
 
 type Sheet = {
   [string]: any,
-}[];
+}[]
 
 type BerthaGetResponse = {
   [string]: Sheet,
-};
+}
 
 declare module.exports: {
   get: (
@@ -26,4 +26,4 @@ declare module.exports: {
   parseKey: (input: string, silent?: boolean) => string | null,
 
   domains: string[],
-};
+}
