@@ -1,10 +1,10 @@
 // @flow
 /* eslint-disable no-console */
 
-import { parseKey, domains } from '..'
+import { parseKey, domains } from '..';
 
 test('parse key', async () => {
-  const key = '0Ajt08GcPGJRbdFJUZWZfZ3M1V0xDaTFBckJnNENCSGc'
+  const key = '0Ajt08GcPGJRbdFJUZWZfZ3M1V0xDaTFBckJnNENCSGc';
   const gsURLs = [
     `https://docs.google.com/a/ft.com/spreadsheet/ccc?key=${key}`,
     `https://docs.google.com/a/ft.com/spreadsheet/ccc?key=${key}#hash`,
@@ -32,17 +32,17 @@ test('parse key', async () => {
     `https://docs.google.com/spreadsheets/foo/${key}#gid=0`,
     `https://docs.google.com/spreadsheets/foo/${key}/edit`,
     `https://docs.google.com/spreadsheets/foo/${key}/edit#gid=0`,
-  ]
+  ];
 
-  const berthaURLs = []
+  const berthaURLs = [];
 
   domains.forEach((host) => {
     berthaURLs.push([
       `http://${host}/view/publish/ig/${key}`,
       `http://${host}/republish/publish/ig/${key}/basic,foo`,
       `http://${host}/view/publish/ig/${key}?callback=hi`,
-    ])
-  })
+    ]);
+  });
 
   const invalidStrings = [
     'ab==gsgsc....asdfasdf 891 sd', // invalid chars
@@ -50,21 +50,21 @@ test('parse key', async () => {
     '0Ajt08GcPGJRbdFJUZWZfZ3M1V0xDaTFBckJnNENCSGc/', // slash at end
     '0Ajt08GcPGJRbdFJUZWZfZ', // too short
     '0Ajt08GcPGJRbdFJUZWZfZ3M1V0xDaTFBckJnNENCSGc0Ajt08GcPGJRbdFJUZWZfZ3M1V0xDaTFBckJnNENCSGc', // too long
-  ]
+  ];
 
-  expect(parseKey(key)).toBe(key)
+  expect(parseKey(key)).toBe(key);
 
-  expect(gsURLs.every(url => parseKey(url) === key)).toBe(true)
-
-  invalidStrings.forEach((url) => {
-    expect(() => {
-      parseKey(url)
-    }).toThrowError(/Cannot parse spreadsheet key from value/)
-  })
+  expect(gsURLs.every(url => parseKey(url) === key)).toBe(true);
 
   invalidStrings.forEach((url) => {
     expect(() => {
-      expect(parseKey(url, true)).toBe(null)
-    }).not.toThrowError('returns null for invalid strings in silent mode')
-  })
-})
+      parseKey(url);
+    }).toThrowError(/Cannot parse spreadsheet key from value/);
+  });
+
+  invalidStrings.forEach((url) => {
+    expect(() => {
+      expect(parseKey(url, true)).toBe(null);
+    }).not.toThrowError('returns null for invalid strings in silent mode');
+  });
+});

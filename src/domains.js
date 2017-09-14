@@ -3,6 +3,6 @@ const domains = Object.freeze([
   'spottiswood.herokuapp.com',
   'staging.bertha.ig.ft.com',
   'spottiswood-tupp.herokuapp.com',
-])
+]);
 
-export default domains
+export default domains;

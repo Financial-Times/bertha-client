@@ -6,4 +6,3 @@ env:
   browser: true
 rules:
   import/prefer-default-export: error
-  semi: [error, never]
