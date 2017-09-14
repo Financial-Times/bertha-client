@@ -15,10 +15,10 @@ jobs:
             - node_modules/
       - run:
           name: ESLint
-          command: npm run eslint -- .
+          command: ./node_modules/.bin/eslint -- .
       - run:
           name: Flow type-checking
-          command: npm run flow
+          command: ./node_modules/.bin/flow
       - run:
           name: Compile with babel
           command: npm run build
