@@ -23,8 +23,8 @@ jobs:
           name: Compile with babel
           command: yarn run build
       - run:
-          name: AVA tests
-          command: yarn run ava
+          name: Tests
+          command: npm test
       - store_artifacts:
           path: dist/
       - deploy:
