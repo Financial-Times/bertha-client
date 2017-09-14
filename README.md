@@ -61,15 +61,32 @@ Identical API to `bertha.get()`, but simply returns a URL string.
 
 ### new bertha.Poller(spreadsheetKey, sheetNames, [options])
 
-Inspired by [ft-poller](https://github.com/Financial-Times/ft-poller) (but with a simpler API), this constructs a poller that fetches the data once a minute. When you call `poller.get()`, it resolves almost immediately (apart from the first time).
+Inspired by [ft-poller](https://github.com/Financial-Times/ft-poller) (but with a simpler API), this constructs a poller that fetches the data once a minute. When you call `poller.getData()`, it resolves immediately with the latest data, even if that data is stale. An internal timer refreshes the data periodically so it's never too old.
 
-Constructor takes same arguments as `bertha.get()`, except that `options` may additionally include the following:
+```js
+const poller = new bertha.Poller(spreadsheetKey, ['someSheet', 'anotherSheet']);
 
-- `refreshInterval` (default: `60000`) – the number of milliseconds between refreshes. Minimum 1000.
+await poller.start();
 
-#### poller.get()
+// poller is now primed, and will continue to refresh approx. every minute
 
-Returns a promise of the latest available data. Resolves immediately with the latest data if available, i.e. after the first successful fetch.
+poller.getData(); // returns the latest data
+```
+
+Constructor takes the same arguments as `bertha.get()`, except that `options` may include the following additional property:
+
+- `refreshAfter` (default: `60000`) – the number of milliseconds to leave between refreshes. Minimum 1000. Note this is a timeout (not a regular interval) that begins *after* each attempted refresh is complete. So with the default settings, the real 'interval' will be more like 61 seconds due to the duration of each refresh attempt. This is to avoid possible problems caused by very slow requests overlapping.
+- `attempts` (default: `3`) – each fetch will be tried up to this many times before the refresh is considered failed.
+- `retryAfter` (default: `2000`) – the number of milliseconds to leave before retrying a failed fetch.
+
+
+#### poller.start()
+
+Returns a promise that resolves (with undefined) when the first fetch has succeeded and the poller is primed with data. It will reject if the first refresh (including retries) fails.
+
+#### poller.getData()
+
+Returns the latest available data immediately. Throws an error if the poller has not finished starting up.
 
 #### poller.stop()
 
