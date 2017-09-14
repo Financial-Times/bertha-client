@@ -1,27 +1,26 @@
 /**
  * @flow
  */
-/* eslint-disable */
+
+type Sheet = {
+  [string]: any
+}[];
+
+type BerthaResponse = {
+  [string]: Sheet
+};
 
 declare module "bertha-client" {
-  declare type Sheet = {
-    [string]: any
-  }[];
-
-  declare type BerthaGetResponse = {
-    [string]: Sheet
-  };
-
   declare export function get(
     spreadsheetKey: string,
     sheetDescriptors: string[],
     options?: { republish?: boolean }
-  ): Promise<BerthaGetResponse>;
+  ): Promise<BerthaResponse>;
 
   declare export function createURL(
     spreadsheetKey: string,
     sheetDescriptors: string[],
-    options?: { republish?: boolean }
+    options?: { republish?: boolean, query?: { [string]: string | number } }
   ): string;
 
   declare export function parseKey(
@@ -32,6 +31,20 @@ declare module "bertha-client" {
   declare export var domains: string[];
 
   declare export class Poller {
-    constructor(): Poller
+    constructor(
+      spreadsheetKey: string,
+      sheetDescriptors: string[],
+      options?: {
+        republish?: boolean,
+        query?: { [string]: string | number },
+        refreshAfter?: number,
+        attempts?: number,
+        retryAfter?: number
+      }
+    ): Poller,
+
+    get(): Promise<BerthaResponse>,
+
+    stop(): void
   }
 }

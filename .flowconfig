@@ -5,3 +5,18 @@
 .*/node_modules/config-chain/test/broken.json
 .*/node_modules/npm/test/fixtures/config/package.json
 .*/node_modules/nock/node_modules/changelog/examples/node.json
+.*/node_modules/fbjs/.*
+
+[include]
+
+[libs]
+
+[lints]
+all=warn
+
+[options]
+include_warnings=true
+suppress_comment= \\(.\\|\n\\)*\\$FlowFixMe
+experimental.strict_call_arity=true
+experimental.const_params=true
+emoji=true

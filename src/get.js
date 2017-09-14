@@ -1,6 +1,7 @@
 // @flow
 
 import createURL from './createURL';
+import type { BerthaResponse } from './types';
 
 // use global fetch in browser, or node-fetch in node
 const fetch = global.fetch || require('node-fetch').default; // eslint-disable-line global-require
@@ -14,7 +15,11 @@ type Options = {
   query?: { [string]: string | number },
 };
 
-const get = async (spreadsheetKey: string, sheetDescriptors: string[], _options?: Options) => {
+const get = async (
+  spreadsheetKey: string,
+  sheetDescriptors: string[],
+  _options?: Options,
+): Promise<BerthaResponse> => {
   // apply defaults
   const options = { ...defaults, ..._options };
 

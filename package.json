@@ -14,8 +14,7 @@
     "node-fetch": false
   },
   "dependencies": {
-    "babel-runtime": "^6.26.0",
-    "lodash": "^4.17.4",
+    "bluebird": "^3.5.0",
     "node-fetch": "^1.7.3"
   },
   "devDependencies": {
@@ -24,7 +23,6 @@
     "babel-plugin-transform-flow-strip-types": "^6.22.0",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.6.0",
-    "bluebird": "^3.5.0",
     "del-cli": "^1.1.0",
     "eslint": "^4.6.1",
     "eslint-config-airbnb": "^15.1.0",
@@ -57,8 +55,8 @@
   "repository": "financial-times/bertha-client",
   "scripts": {
     "build": "npm run clean && mkdir -p dist && cp index.js.flow dist/ && babel src --out-dir dist --source-maps",
-    "prepublish": "del dist/__tests__",
     "clean": "del dist/**",
+    "prepublish": "del dist/__tests__",
     "test": "jest",
     "types": "flow gen-flow-files src/index.js --out-dir dist"
   }
