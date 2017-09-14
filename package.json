@@ -16,7 +16,6 @@
     "node-fetch": "^1.7.3"
   },
   "devDependencies": {
-    "ava": "^0.22.0",
     "babel-cli": "^6.26.0",
     "babel-eslint": "^8.0.0",
     "babel-plugin-transform-flow-strip-types": "^6.22.0",
@@ -33,10 +32,16 @@
     "eslint-plugin-react": "^7.3.0",
     "flow-bin": "^0.54.1",
     "flow-typed": "^2.1.5",
+    "jest": "^21.1.0",
     "nock": "^9.0.14",
     "publish": "^0.6.0"
   },
   "files": ["dist"],
+  "jest": {
+    "bail": true,
+    "testMatch": ["**/__tests__/**/*.js"],
+    "roots": ["dist"]
+  },
   "main": "dist",
   "repository": "financial-times/bertha-client",
   "scripts": {
@@ -44,7 +49,7 @@
       "npm run clean && mkdir -p dist && cp index.js.flow dist/ && babel src --out-dir dist --source-maps",
     "prepublish": "del dist/**/*.test.{js,js.map}",
     "clean": "del dist/**",
-    "test": "ava",
+    "test": "jest",
     "types": "flow gen-flow-files src/index.js --out-dir dist"
   }
 }
