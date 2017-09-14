@@ -14,7 +14,6 @@
     "node-fetch": false
   },
   "dependencies": {
-    "lodash": "^4.17.4",
     "node-fetch": "^1.7.3"
   },
   "devDependencies": {
