@@ -1,6 +1,6 @@
 # bertha-client [![CircleCI](https://circleci.com/gh/Financial-Times/bertha-client.svg?style=svg)](https://circleci.com/gh/Financial-Times/bertha-client) [![npm](https://img.shields.io/npm/v/bertha-client.svg)](https://npmjs.com/package/bertha-client)
 
-A client library for fetching data from [Bertha](https://github.com/ft-interactive/bertha). For use in Node and the browser.
+A client library for fetching data from [Bertha](https://github.com/ft-interactive/bertha).
 
 Why use this instead of fetching Bertha URLs with `fetch` or `axios`?
 
@@ -12,11 +12,6 @@ Why use this instead of fetching Bertha URLs with `fetch` or `axios`?
 ## Installation
 
 - `yarn add bertha-client` **or** `npm install bertha-client`
-
-**Browser**: Use Browserify or Rollup. Requires [window.fetch](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/fetch), so make sure this is [polyfilled](https://cdn.polyfill.io/v2/docs/features/#fetch).
-
-**Node**: Just `require` or `import` as usual. No need to polyfill anything – the Node version of bertha-client uses [node-fetch](https://github.com/bitinn/node-fetch) without modifying the global scope.
-
 
 ## Usage
 
@@ -63,6 +58,22 @@ Plain object (optional).
 ### bertha.createURL(spreadsheetKey, sheetNames, [options])
 
 Identical API to `bertha.get()`, but simply returns a URL string.
+
+### new bertha.Poller(spreadsheetKey, sheetNames, [options])
+
+Inspired by [ft-poller](https://github.com/Financial-Times/ft-poller) (but with a simpler API), this constructs a poller that fetches the data once a minute. When you call `poller.get()`, it resolves almost immediately (apart from the first time).
+
+Constructor takes same arguments as `bertha.get()`, except that `options` may additionally include the following:
+
+- `refreshInterval` (default: `60000`) – the number of milliseconds between refreshes. Minimum 1000.
+
+#### poller.get()
+
+Returns a promise of the latest available data. Resolves immediately with the latest data if available, i.e. after the first successful fetch.
+
+#### poller.stop()
+
+Stops any new fetches from occurring (but any in-progress fetch will finish).
 
 ### bertha.parseKey(url, [silent])
 
