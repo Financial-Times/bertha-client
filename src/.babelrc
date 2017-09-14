@@ -5,9 +5,13 @@
       {
         "targets": {
           "node": "8.0.0"
-        }
+        },
+        "useBuiltIns": true
       }
     ]
   ],
-  "plugins": ["transform-flow-strip-types", "transform-object-rest-spread"]
+  "plugins": [
+    "transform-flow-strip-types",
+    ["transform-object-rest-spread", { "useBuiltIns": true }]
+  ]
 }
