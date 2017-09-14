@@ -91,7 +91,6 @@ Example spreadsheet:
 | someone.age        | 50      |
 | someone.name.first | Bob     |
 | someone.name.last  | Hoskins |
-| someone.name.last  | y       |
 
 ```js
 // result of "|object" transform
