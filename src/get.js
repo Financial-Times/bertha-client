@@ -3,7 +3,7 @@
 import createURL from './createURL'
 
 // use global fetch in browser, or node-fetch in node
-const fetch = global.fetch || require('node-fetch') // eslint-disable-line global-require
+const fetch = global.fetch || require('node-fetch').default // eslint-disable-line global-require
 
 const defaults = {
   republish: false,
