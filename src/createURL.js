@@ -6,7 +6,7 @@ const defaults = {
 
 type Options = {
   republish?: boolean,
-  query: { [string]: string | number },
+  query?: { [string]: string | number },
 };
 
 const createURL = (spreadsheetKey: string, sheetDescriptors: string[], _options?: Options) => {
