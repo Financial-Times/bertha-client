@@ -116,9 +116,9 @@ Example spreadsheet:
 
 Recommended approach:
 
-- Clone this repo and run `yarn`.
-- Run `yarn run build -- --watch` – this will compile files continually from `src` to `dist` using Babel.
-- In another terminal, run `yarn run ava -- --watch` to run ava continually against files in `dist`.
+- Clone this repo and run `npm install`.
+- Run `npm run build -- --watch` – this will compile files continually from `src` to `dist` using Babel.
+- In another terminal, run `npm test -- --watch` to run Jest continually against files in `dist`.
 
 
 ### Publishing to npm
@@ -127,5 +127,5 @@ This module is automatically published to npm via CircleCI whenever the master b
 
 To publish a new version:
 
-- `yarn version` (will prompt you to enter a new version)
+- `npm version patch` (or replace `patch` with `minor` or `major` as appropriate)
 - `git push && git push --tags`
