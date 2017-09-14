@@ -7,21 +7,21 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          key: bertha-client-{{ checksum "yarn.lock" }}
-      - run: yarn
+          key: bertha-client-{{ checksum "package-lock.json" }}
+      - run: npm install
       - save_cache:
-          key: bertha-client-{{ checksum "yarn.lock" }}
+          key: bertha-client-{{ checksum "package-lock.json" }}
           paths:
             - node_modules/
       - run:
           name: ESLint
-          command: yarn run eslint -- .
+          command: npm run eslint -- .
       - run:
           name: Flow type-checking
-          command: yarn run flow
+          command: npm run flow
       - run:
           name: Compile with babel
-          command: yarn run build
+          command: npm run build
       - run:
           name: Tests
           command: npm test
