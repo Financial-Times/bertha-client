@@ -19,7 +19,7 @@ const get = async (
   spreadsheetKey: string,
   sheetDescriptors: string[],
   _options?: Options,
-): BerthaResponse => {
+): Promise<BerthaResponse> => {
   // apply defaults
   const options = { ...defaults, ..._options };
 
