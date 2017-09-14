@@ -1,10 +1,9 @@
 // @flow
 /* eslint-disable no-console */
 
-import test from 'ava'
-import { parseKey, domains } from '.'
+import { parseKey, domains } from '..'
 
-test('parse key', async (t) => {
+test('parse key', async () => {
   const key = '0Ajt08GcPGJRbdFJUZWZfZ3M1V0xDaTFBckJnNENCSGc'
   const gsURLs = [
     `https://docs.google.com/a/ft.com/spreadsheet/ccc?key=${key}`,
@@ -53,23 +52,19 @@ test('parse key', async (t) => {
     '0Ajt08GcPGJRbdFJUZWZfZ3M1V0xDaTFBckJnNENCSGc0Ajt08GcPGJRbdFJUZWZfZ3M1V0xDaTFBckJnNENCSGc', // too long
   ]
 
-  t.is(parseKey(key), key, 'handles a plain key')
+  expect(parseKey(key)).toBe(key)
 
-  t.true(gsURLs.every(url => parseKey(url) === key), 'handles a Google Spreadsheets URL')
+  expect(gsURLs.every(url => parseKey(url) === key)).toBe(true)
 
   invalidStrings.forEach((url) => {
-    t.throws(
-      () => {
-        parseKey(url)
-      },
-      /Cannot parse spreadsheet key from value/,
-      'throws on invalid input',
-    )
+    expect(() => {
+      parseKey(url)
+    }).toThrowError(/Cannot parse spreadsheet key from value/)
   })
 
   invalidStrings.forEach((url) => {
-    t.notThrows(() => {
-      t.is(parseKey(url, true), null)
-    }, 'returns null for invalid strings in silent mode')
+    expect(() => {
+      expect(parseKey(url, true)).toBe(null)
+    }).not.toThrowError('returns null for invalid strings in silent mode')
   })
 })

@@ -1,11 +1,10 @@
 // @flow
 /* eslint-disable no-console */
 
-import test from 'ava'
 import nock from 'nock'
-import * as bertha from '.'
+import * as bertha from '..'
 
-test('get single sheet', async (t) => {
+test('get single sheet', async () => {
   const data = [{ cat: 1, dog: 2 }, { cat: 3, dog: 4 }]
 
   const mock = nock('https://bertha.ig.ft.com')
@@ -14,14 +13,14 @@ test('get single sheet', async (t) => {
 
   const response = await bertha.get('ABC123', ['foo'])
 
-  t.deepEqual(response, {
+  expect(response).toEqual({
     foo: data,
   })
 
   mock.done()
 })
 
-test('get multiple sheets', async (t) => {
+test('get multiple sheets', async () => {
   const data = {
     foo: [{ cat: 1, dog: 2 }, { cat: 3, dog: 4 }],
     bar: [{ parrot: 1, fish: 2 }, { parrot: 3, fish: 4 }],
@@ -33,12 +32,12 @@ test('get multiple sheets', async (t) => {
 
   const response = await bertha.get('ABC123', ['foo', 'bar'])
 
-  t.deepEqual(response, data)
+  expect(response).toEqual(data)
 
   mock.done()
 })
 
-test('get single sheet with `|object` transform', async (t) => {
+test('get single sheet with `|object` transform', async () => {
   const data = [
     { name: 'cat', value: 'yar' },
     { name: 'dog', value: true },
@@ -51,7 +50,7 @@ test('get single sheet with `|object` transform', async (t) => {
 
   const response = await bertha.get('ABC123', ['foo|object'])
 
-  t.deepEqual(response, {
+  expect(response).toEqual({
     foo: {
       cat: 'yar',
       dog: true,
@@ -62,7 +61,7 @@ test('get single sheet with `|object` transform', async (t) => {
   mock.done()
 })
 
-test('get multiple sheets with `|object` transform', async (t) => {
+test('get multiple sheets with `|object` transform', async () => {
   const data = {
     foo: [{ name: 'cat', value: 'yar' }, { name: 'dog', value: 456 }],
     bar: [{ parrot: 1, fish: 2 }, { parrot: 3, fish: 4 }],
@@ -74,7 +73,7 @@ test('get multiple sheets with `|object` transform', async (t) => {
 
   const response = await bertha.get('ABC123', ['foo|object', 'bar'])
 
-  t.deepEqual(response, {
+  expect(response).toEqual({
     foo: {
       cat: 'yar',
       dog: 456,
@@ -85,7 +84,7 @@ test('get multiple sheets with `|object` transform', async (t) => {
   mock.done()
 })
 
-test('get single sheet with `|object` transform with dot-separated keys', async (t) => {
+test('get single sheet with `|object` transform with dot-separated keys', async () => {
   const data = [
     { name: 'cat.name.first', value: 'Bob' },
     { name: 'cat.name.last', value: 'Hoskins' },
@@ -100,7 +99,7 @@ test('get single sheet with `|object` transform with dot-separated keys', async 
 
   const response = await bertha.get('ABC123', ['foo|object'])
 
-  t.deepEqual(response, {
+  expect(response).toEqual({
     foo: {
       cat: {
         name: { first: 'Bob', last: 'Hoskins' },
