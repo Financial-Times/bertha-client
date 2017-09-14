@@ -20,6 +20,8 @@ test('Poller', async () => {
 
   const firstResponse = await poller.get();
 
+  firstMock.done();
+
   expect(firstResponse).toEqual({
     foo: {
       cat: {
@@ -31,8 +33,12 @@ test('Poller', async () => {
     },
   });
 
-  firstMock.done();
+  // ensure another request after a short delay gets exactly the same response back
+  await Bluebird.delay(100);
+  const firstResponseCopy = await poller.get();
+  expect(firstResponseCopy).toBe(firstResponse);
 
+  // mock it again with new data, and wait a full second so the poller has time to get it
   const secondMock = nock('https://bertha.ig.ft.com')
     .get('/view/publish/gss/ABC123/foo')
     .reply(200, [{ name: 'now', value: 'changed!' }]);
