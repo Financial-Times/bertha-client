@@ -80,7 +80,7 @@ The data from `bertha.get()` is always returned as a plain JavaScript object (ev
 
 ### The `|object` transformation
 
-If you append a sheet name with `|object`, that sheet will be transformed into a **plain object** (instead of an array), using the sheet's `name` and `value` columns as key paths and values, respectively. Any other columns are discarded.
+If you append a sheet name with `|object`, that sheet will be transformed into a **plain object** (instead of an array), using the sheet's `name` and `value` columns as key paths and values, respectively. Any other columns are discarded. If the `name` or `value` columns are missing, an error is thrown.
 
 Example spreadsheet:
 
