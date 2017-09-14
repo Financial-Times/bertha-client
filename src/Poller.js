@@ -11,6 +11,7 @@ const defaults = {
 type Options = {
   republish?: boolean,
   query?: { [string]: string | number },
+  refreshInterval: number,
 };
 
 const INTERVAL = Symbol('INTERVAL');
