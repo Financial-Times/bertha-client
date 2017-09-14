@@ -3,7 +3,7 @@ jobs:
   build:
     working_directory: ~/bertha-client
     docker:
-      - image: callum85/node-with-flow:0.0.2
+      - image: circleci/node:8
     steps:
       - checkout
       - restore_cache:
