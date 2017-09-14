@@ -37,7 +37,9 @@ declare module "bertha-client" {
       options?: {
         republish?: boolean,
         query?: { [string]: string | number },
-        refreshInterval: number
+        refreshAfter?: number,
+        attempts?: number,
+        retryAfter?: number
       }
     ): Poller,
 
