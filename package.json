@@ -1,11 +1,14 @@
 {
   "name": "bertha-client",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "author": "callumlocke",
   "ava": {
     "babel": {},
     "files": "dist/**/*.test.js",
-    "source": ["dist/**/*.js", "fixtures/**/*"]
+    "source": [
+      "dist/**/*.js",
+      "fixtures/**/*"
+    ]
   },
   "browser": {
     "node-fetch": false
@@ -38,17 +41,22 @@
   "engines": {
     "node": ">=8"
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "jest": {
     "bail": true,
-    "testMatch": ["**/__tests__/**/*.js"],
-    "roots": ["dist"]
+    "testMatch": [
+      "**/__tests__/**/*.js"
+    ],
+    "roots": [
+      "dist"
+    ]
   },
   "main": "dist",
   "repository": "financial-times/bertha-client",
   "scripts": {
-    "build":
-      "npm run clean && mkdir -p dist && cp index.js.flow dist/ && babel src --out-dir dist --source-maps",
+    "build": "npm run clean && mkdir -p dist && cp index.js.flow dist/ && babel src --out-dir dist --source-maps",
     "prepublish": "del dist/__tests__",
     "clean": "del dist/**",
     "test": "jest",
