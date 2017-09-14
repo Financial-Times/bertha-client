@@ -10,31 +10,26 @@ const parseKey = (string: string, silent: boolean = false) => {
     if (string.indexOf('https://docs.google.com') === 0) {
       if (string.indexOf('?key=') === -1) {
         // it's a new-style url.
-        return string.split(/\/spreadsheets\/[^/]+\//)
+        return string
+          .split(/\/spreadsheets\/[^/]+\//)
           .pop()
           .split('/')[0]
           .split('?')[0]
-          .split('#')[0]
-        ;
+          .split('#')[0];
       }
 
       // it's an old-style url.
-      return (
-        string.split('key=')
-          .pop()
-          .split('&')[0]
-          .split('#')[0]
-      );
+      return string
+        .split('key=')
+        .pop()
+        .split('&')[0]
+        .split('#')[0];
     }
 
     // attempt to parse as a bertha url
     const afterProtocol = string.split('//')[1];
     if (domains.some(domain => afterProtocol.indexOf(domain) === 0)) {
-      return (
-        afterProtocol
-          .split('?')[0]
-          .split('/')[4]
-      );
+      return afterProtocol.split('?')[0].split('/')[4];
     }
   }
 
